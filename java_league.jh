@@ -1,0 +1,34 @@
+entity Time {
+	nome String,
+    uniforme1 String,
+    uniforme2 String,
+    escudo String,
+}
+
+entity Jogador {
+	nome String,
+	overall Long,
+	pais String,
+    dataFinal Instant,
+    valorMinimo Long,
+    valorMaximo Long,
+}
+
+entity Lance {
+	dataLance Instant,
+    valor Long,
+}
+
+relationship ManyToOne {
+	Jogador{time} to Time
+}
+
+relationship ManyToMany {
+	Lance{jogador} to Jogador
+}
+
+paginate Lance, Jogador with pagination
+
+dto * with mapstruct
+service all with serviceClass
+
